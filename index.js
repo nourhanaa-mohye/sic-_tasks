@@ -13,10 +13,6 @@ app.post('/', (req, res) => {
     const data = admin.firestore(); 
     const Ref = db.collection("1").doc("2001"); 
     collectionRef.set(req.body) 
- 
 }) 
  
-app.listen(3000, () => { 
-    
-   console.log(`Server running on http://${serverIp}:${port}`);
-});
+app.listen(3000, () => { console.log(`Server running on http://${serverIp}:${port}`);
