@@ -11,7 +11,7 @@ admin.initializeApp({
  
 app.post('/', (req, res) => { 
     const data = admin.firestore(); 
-    const Ref = db.collection("1").doc("2001"); 
+    const Ref = db.collection("test").doc("demo"); 
     collectionRef.set(req.body) 
 }) 
  
