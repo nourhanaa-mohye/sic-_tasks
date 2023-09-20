@@ -1,43 +1,23 @@
 const express = require('express');
-const fs = require('fs');
-const cors = require('cors');
-const os = require('os');
+const admin = require('admin');
 
 const app = express();
 const port = 3000;
+const serviceAccount = require("C:\\Users\\Documents\\Tasks\\Firebase_Task\\test-a3669-firebase-adminsdk-xa0h0-2eb82997a3.json"); 
+app.use(express.json()) 
 
-const networkInterfaces = os.networkInterfaces();
-let serverIp = '';
-
-for (const iface of Object.values(networkInterfaces)) {
-  for (const alias of iface) {
-    if (alias.family === 'IPv4' && !alias.internal) {
-      serverIp = alias.address;
-      break;
-    }
-  }
-  if (serverIp) {
-    break;
-  }
-}
-
-app.use(cors());
-app.use(express.json());
-
-app.post('/writeName', (req, res) => {
-  const name = req.body.name;
-  if (name) {
-    try {
-      fs.writeFileSync('names.txt', name + '\n', { flag: 'a' });
-      res.status(200).send('Name written successfully.');
-    } catch (err) {
-      res.status(500).send('Failed to write the name.');
-    }
-  } else {
-    res.status(400).send('Name is required.');
-  }
-});
-
-app.listen(port, () => {
+admin.initializeApp({ 
+    credential: admin.credential.cert(serviceAccount) }); 
+ 
+app.post('/', (req, res) => { 
+    const data = admin.firestore(); 
+    const Ref = db.collection("1").doc("2001"); 
+    collectionRef.set(req.body) 
+ 
+}) 
+ 
+app.listen(3000, () => { 
+    console.log(`listening on port 3000!`) 
+})
   console.log(`Server running on http://${serverIp}:${port}`);
 });
