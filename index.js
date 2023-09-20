@@ -17,7 +17,6 @@ app.post('/', (req, res) => {
 }) 
  
 app.listen(3000, () => { 
-    console.log(`listening on port 3000!`) 
-})
-  console.log(`Server running on http://${serverIp}:${port}`);
+    
+   console.log(`Server running on http://${serverIp}:${port}`);
 });
